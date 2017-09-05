@@ -1,5 +1,8 @@
 # luceneComplexInformationRetrieval
 
+
+The goal of this project is to find the following result using lucene and provided files(test200).
+
 Assignment:
 
 
