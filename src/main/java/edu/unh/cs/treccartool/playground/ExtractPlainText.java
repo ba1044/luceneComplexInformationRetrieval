@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 import co.nstant.in.cbor.CborException;
-import edu.un.cs.treccartool.Data;
-import edu.un.cs.treccartool.read_data.DeserializeData;
+import edu.unh.cs.treccartool.Data;
+import edu.unh.cs.treccartool.read_data.DeserializeData;
 
 /**
  * User: dietz
