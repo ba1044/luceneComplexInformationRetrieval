@@ -1,18 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.unh.cs753853.team1</groupId>
-	<artifactId>lucene-complex-answer-retrival</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-    <name>lucene-complex-answer-retrival</name>
-	<url>http://maven.apache.org</url>
-	
-	
+  <groupId>edu.unh.cs753853.team1</groupId>
+  <artifactId>lucene-answer-retrieval</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-	<properties>
+  <name>lucene-answer-retrieval</name>
+  <url>http://maven.apache.org</url>
+
+
+	<!-- <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties> -->
+	
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 	
 	<dependencies>
@@ -27,11 +32,11 @@
             <version>3.3.2</version>
         </dependency>
         
-        <dependency>
-        	<groupId>edu.unh.cs.treccar</groupId>
-         	<artifactId>treccar-tools</artifactId>
+     <!--    <dependency>
+        	<groupId>edu.unh.cs.treccartool</groupId>
+         	<artifactId>ReadDataTest</artifactId>
          	<version>1.4</version>
-        </dependency>
+        </dependency>  -->
         
         	<dependency>  <!-- libraries your code depends on -->
 				<groupId>org.apache.lucene</groupId>
@@ -47,7 +52,7 @@
     </dependencies>
 	
 	
-	<build>
+<!-- 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -64,16 +69,45 @@
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
-                        <!--<useUniqueVersions>false</useUniqueVersions>-->
+                        <useUniqueVersions>false</useUniqueVersions>
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                        
-                              <mainClass>edu.unh.cs.treccar.*.*</mainClass> 
+                              <mainClass>edu.unh.cs853.IndexParagraphs</mainClass> 
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
 		</plugins>
 	</build>
+	 -->
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				  <version>2.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifest>
+									<mainClass>edu.unh.cs753853.team1.IndexParagraphs</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
 </project>
