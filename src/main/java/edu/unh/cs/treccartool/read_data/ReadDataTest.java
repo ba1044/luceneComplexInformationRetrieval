@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 
-import edu.un.cs.treccartool.Data;
+import edu.unh.cs.treccartool.Data;
 
 /**
  * User: dietz
