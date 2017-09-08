@@ -49,11 +49,9 @@ public class IndexParagraphs {
     public static void main(String[] args) throws Exception {
         // Relative path definitions
         String indexDir = "index";
-        String paragraphFile = "test200.cbor/train.test200.cbor.paragraphs";
+        String paragraphFile = "train.test200.cbor.paragraphs";
         
-        //newly Added
-        
-      //newly Added
+      
     	
   	  // Defaults
       String index = "index";
