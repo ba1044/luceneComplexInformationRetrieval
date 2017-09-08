@@ -16,7 +16,7 @@ import co.nstant.in.cbor.model.Special;
 import co.nstant.in.cbor.model.SpecialType;
 import co.nstant.in.cbor.model.UnicodeString;
 import co.nstant.in.cbor.model.UnsignedInteger;
-import edu.un.cs.treccartool.Data;
+import edu.unh.cs.treccartool.Data;
 
 /**
  * User: dietz
