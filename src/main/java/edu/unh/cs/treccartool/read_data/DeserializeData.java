@@ -1,4 +1,4 @@
-package edu.un.cs.treccartool.read_data;
+package edu.unh.cs.treccartool.read_data;
 
 import java.io.IOException;
 import java.io.InputStream;
