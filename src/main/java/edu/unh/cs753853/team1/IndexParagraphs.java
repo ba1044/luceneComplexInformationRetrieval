@@ -1,5 +1,3 @@
-
-
 package edu.unh.cs753853.team1;
 
 import java.io.BufferedReader;
@@ -29,6 +27,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.similarities.BasicStats;
+import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.search.similarities.SimilarityBase;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -127,17 +126,6 @@ public class IndexParagraphs {
         IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(index)));
         IndexSearcher searcher = new IndexSearcher(reader);
 
-        searcher.setSimilarity(new SimilarityBase() {
-            @Override
-            protected float score(BasicStats stats, float freq, float docLen) {
-                return (freq);
-            }
-
-            @Override
-            public String toString() {
-                return null;
-            }
-        });
         Analyzer analyzer = new StandardAnalyzer();
 
         // If no queries specified
@@ -148,9 +136,36 @@ public class IndexParagraphs {
             in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         }
 
+
+        System.out.println();
         // Parse the specified field using the analyzer
         QueryParser parser = new QueryParser(field, analyzer);
         while (true) {
+            // Ask the user what kind of scoring function they would like to use
+            System.out.println("Which scoring function? (0: default, 1: Term Frequency): ");
+            int scoretype = Integer.parseInt(in.readLine());
+            if(scoretype == 1)
+            {
+                searcher.setSimilarity(new SimilarityBase() {
+                    @Override
+                    protected float score(BasicStats stats, float freq, float docLen) {
+                        return (freq);
+                    }
+
+                    @Override
+                    public String toString() {
+                        return null;
+                    }
+                });
+            }
+            else if (scoretype == 0) {
+                searcher.setSimilarity(IndexSearcher.getDefaultSimilarity());
+            }
+            else
+            {
+                System.out.println("Invalid scoring type.");
+                continue;
+            }
             // Prompt the user if no queries specified
             if (queries == null && queryString == null) {
                 System.out.println("Enter query: ");
